@@ -1,1 +1,3 @@
 # SCLI
+O Sistema de Controle de Loja de Informática será projetado a fim de informatizar o processo de manutenção e realização de serviços em computadores, além do processo de compras e vendas de peças. O objetivo deste é agilizar todo o processo de comercialização e controle de uma loja de informática, como também gerenciamento de estoque e encaminhamento de serviços para terceiros. Facilitando todo o gerenciamento e controle interno de uma loja de informática, além de agilizar o serviço requerido por clientes.
+O sistema deverá gerar relatórios básicos e executar eventos como agendamento de serviço e entregas de orçamentos.
