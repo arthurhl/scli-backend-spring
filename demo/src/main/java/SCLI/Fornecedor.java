@@ -6,6 +6,8 @@ import org.hibernate.annotations.Type;
 
 public class Fornecedor implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
 	private Integer id;
 
 	private String nome;

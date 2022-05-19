@@ -6,6 +6,8 @@ import org.hibernate.annotations.Type;
 
 public class Reposicao implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
 	private Integer id;
 
 	private Integer quantidade;

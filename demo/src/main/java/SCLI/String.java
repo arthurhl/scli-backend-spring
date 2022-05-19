@@ -5,11 +5,9 @@ import lombok.*;
 import org.hibernate.annotations.Type;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode(of = { "id" })
 
 public class String implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
 }

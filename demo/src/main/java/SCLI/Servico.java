@@ -6,6 +6,8 @@ import org.hibernate.annotations.Type;
 
 public class Servico implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+
 	private Integer id;
 
 	private Boolean status;
