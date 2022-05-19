@@ -4,7 +4,7 @@ import javax.validation.constraints.*;
 import lombok.*;
 import org.hibernate.annotations.Type;
 
-public class Servico {
+public class Servico implements Serializable {
 
 	private Integer id;
 
