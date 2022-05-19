@@ -1,4 +1,4 @@
-package SCLI;
+package edu.ifes.ci.si.les.scli.model.enums;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -10,18 +10,22 @@ import org.hibernate.annotations.Type;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = {"id")
-public class Pedido implements Serializable {
+public class Orcamento implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private Integer id;
 
-	private String endereco;
-
 	private Double valor;
 
-	private String telefone;
+	private Date dataInicio;
+
+	private Date dataTermino;
+
+	private String descricao;
 
 	private Cliente cliente;
+
+	private Funcionario funcionario;
 
 }

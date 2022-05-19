@@ -1,4 +1,4 @@
-package edu.ifes.ci.si.les.scv.config;
+package edu.ifes.ci.si.les.scli.config;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
