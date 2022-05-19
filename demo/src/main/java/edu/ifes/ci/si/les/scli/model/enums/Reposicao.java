@@ -6,10 +6,10 @@ import lombok.*;
 import org.hibernate.annotations.Type;
 
 @Entity
-@Data 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(of = {"id")
+@EqualsAndHashCode(of = { "id" })
 public class Reposicao implements Serializable {
 
 	private static final long serialVersionUID = 1L;

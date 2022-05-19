@@ -9,7 +9,7 @@ import org.hibernate.annotations.Type;
 @Data 
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(of = {"id")
+@EqualsAndHashCode(of = { "id" })
 public class ItemDePedido implements Serializable {
 
 	private static final long serialVersionUID = 1L;
