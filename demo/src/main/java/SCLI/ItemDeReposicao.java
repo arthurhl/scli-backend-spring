@@ -1,4 +1,5 @@
-import java.io.Serializable;
+package SCLI;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import lombok.*;

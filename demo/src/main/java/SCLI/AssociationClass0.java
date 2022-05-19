@@ -1,10 +1,4 @@
-
-
-import java.io.Serializable;
-import javax.persistence.*;
-import javax.validation.constraints.*;
-import lombok.*;
-import org.hibernate.annotations.Type;
+package SCLI;
 
 public class AssociationClass0 implements Serializable {
 
