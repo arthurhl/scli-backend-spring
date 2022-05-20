@@ -1,6 +1,6 @@
 package edu.ifes.ci.si.les.scli.model.enums;
 
-
+import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import lombok.*;
