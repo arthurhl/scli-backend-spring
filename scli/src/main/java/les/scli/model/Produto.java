@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 @Entity
 public class Produto implements Serializable {
 	@Id
@@ -25,12 +26,15 @@ public class Produto implements Serializable {
 	@Column()
 	private String descricao;
 
+	@NotNull(message = "Produto_id obrigatório")
 	@OneToMany(mappedBy = "id.produto")
 	private Collection<ItemPedido> itens_produto_pedido = new ArrayList<>();
 	
+	@NotNull(message = "Produto_id obrigatório")
 	@OneToMany(mappedBy = "id.produto")
 	private Collection<ItemReposicao> itens_reposicao = new ArrayList<>();
 	
+	@NotNull(message = "Prudoto_fonercedor obrigatório")
 	@ManyToMany
 	@JoinTable(name="produto_fornecedor",
 		joinColumns = @JoinColumn(name="produto_id"),

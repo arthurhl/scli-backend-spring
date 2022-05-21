@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class RealizarServicoEmpresa implements Serializable {
@@ -21,11 +22,12 @@ public class RealizarServicoEmpresa implements Serializable {
 	@Column()
 	private Boolean status;
 	
+	@NotNull(message = "Servico_id obrigatório")
 	@ManyToOne
 	@JoinColumn(name="servico_id")
 	private Servico servico;
 
-	
+	@NotNull(message = "EmpresaTerceirizada_id obrigatório")
 	@ManyToOne
 	@JoinColumn(name="empresaTerceirizada_id")
 	private EmpresaTerceirizada empresaTerceirizada;

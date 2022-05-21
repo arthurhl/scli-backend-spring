@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Orcamento implements Serializable {
@@ -23,11 +24,13 @@ public class Orcamento implements Serializable {
 	@Column()
 	private String descricao;
 
+	@NotNull(message = "Cliente_id obrigatório")
 	@ManyToOne
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 
 	
+	@NotNull(message = "Funcionario_id obrigatório")
 	@ManyToOne
 	@JoinColumn(name="funcionario_id")
 	private Funcionario funcionario;
