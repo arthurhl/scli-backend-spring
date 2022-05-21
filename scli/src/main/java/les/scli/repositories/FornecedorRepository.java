@@ -1,5 +1,8 @@
 package les.scli.repositories;
 
-public class FornecedorRepository {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface FornecedorRepository {
     
 }

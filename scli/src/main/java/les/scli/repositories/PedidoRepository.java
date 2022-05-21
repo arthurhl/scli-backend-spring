@@ -1,5 +1,8 @@
 package les.scli.repositories;
 
-public class PedidoRepository {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface PedidoRepository {
     
 }

@@ -1,5 +1,8 @@
 package les.scli.repositories;
 
-public class GerenteRepository {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface GerenteRepository {
     
 }

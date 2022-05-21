@@ -1,5 +1,8 @@
 package les.scli.repositories;
 
-public class ServicoRepository {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ServicoRepository {
     
 }

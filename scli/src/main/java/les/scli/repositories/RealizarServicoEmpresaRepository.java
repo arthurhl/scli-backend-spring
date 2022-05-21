@@ -1,5 +1,8 @@
 package les.scli.repositories;
 
-public class RealizarServicoEmpresaRepository {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface RealizarServicoEmpresaRepository {
     
 }

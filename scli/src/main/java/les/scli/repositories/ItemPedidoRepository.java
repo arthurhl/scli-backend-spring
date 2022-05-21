@@ -1,5 +1,8 @@
 package les.scli.repositories;
 
-public class ItemPedidoRepository {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ItemPedidoRepository {
     
 }

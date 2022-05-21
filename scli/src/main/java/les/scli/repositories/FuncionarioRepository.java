@@ -1,5 +1,8 @@
 package les.scli.repositories;
 
-public class FuncionarioRepository {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface FuncionarioRepository {
     
 }
