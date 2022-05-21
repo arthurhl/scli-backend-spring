@@ -1,17 +1,13 @@
 package les.scli.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
-import lombok.*;
 
 @Entity
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode(of = { "id" })
 public class Reposicao implements Serializable {
-
-	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,5 +21,8 @@ public class Reposicao implements Serializable {
 
 	@Column()
 	private Fornecedor fornecedor;
+
+	@OneToMany(mappedBy = "id.reposicao")
+	private Set<ItemReposicao> itens_reposicao = new HashSet<>();
 
 }

@@ -23,7 +23,10 @@ public class Produto implements Serializable {
 	@Column()
 	private String descricao;
 
-	@OneToMany(mappedBy = "id.pedido")
-	private Set<ItemPedido> itens = new HashSet<>();
+	@OneToMany(mappedBy = "id.produto")
+	private Set<ItemPedido> itens_produto_pedido = new HashSet<>();
+	
+	@OneToMany(mappedBy = "id.produto")
+	private Set<ItemReposicao> itens_reposicao = new HashSet<>();
 
 }
