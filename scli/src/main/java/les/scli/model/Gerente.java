@@ -1,36 +1,53 @@
 package les.scli.model;
 
 import java.io.Serializable;
-
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import javax.persistence.*;
+import lombok.*;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(of = {"id"}) 
 public class Gerente implements Serializable {
+  private static final long serialVersionUID = 1L;
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
 
   @Column()
-  private String nome;
+	private String nome;
 
-  @Column()
-  private String cpf;
+	@Column(length=11)
+	@NotBlank(message = "CPF obrigatório")
+	@Size(min=11,max=11, message="CPF inválido")
+	private String cpf;
 
-  @Column()
-  private String email;
+	@Column()
+	@NotBlank(message = "Email obrigatório")
+	private String email;
 
-  @Column()
-  private String senha;
+	@Column()
+	@NotBlank(message = "Senha obrigatório")
+	private String senha;
 
-  @Column()
-  private String uf;
+	@Column()
+	@NotBlank(message = "Uf obrigatório")
+	@Size(min = 2, max = 2, message = "Uf inválido")
+	private String uf;
 
-  @Column()
-  private String cidade;
+	@Column()
+	@NotBlank(message = "Cidade obrigatório")
+	private String cidade;
 
-  @Column()
-  private String bairro;
+	@Column()
+	@NotBlank(message = "Bairro obrigatório")
+	private String bairro;
 
-  @Column()
-  private String rua;
+	@Column()
+	@NotBlank(message = "Rua obrigatório")
+	private String rua;
 }

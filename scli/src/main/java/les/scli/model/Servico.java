@@ -3,6 +3,7 @@ package les.scli.model;
 import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.*;
 
@@ -23,6 +24,7 @@ public class Servico implements Serializable {
 	@NotBlank(message = "Status obrigatório")
 	private Boolean status;
 
+	@NotNull(message = "Orcamento_id obrigatório")
 	@OneToOne
 	@JoinColumn(name="orcamento_id")
 	private Orcamento orcamento;

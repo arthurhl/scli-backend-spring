@@ -21,7 +21,6 @@ public class Cliente implements Serializable {
 	private Integer id;
 
 	@Column()
-	@NotBlank(message = "Nome obrigatório")
 	private String nome;
 
 	@Column(length=11)

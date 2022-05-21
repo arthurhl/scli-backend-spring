@@ -6,6 +6,7 @@ import java.util.Collection;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.*;
 
@@ -26,16 +27,17 @@ public class Reposicao implements Serializable {
 	@NotBlank(message = "Quantidade obrigatória")
 	private Integer quantidade;
 
-	
+	@NotNull(message = "Gerente_id obrigatório")
 	@ManyToOne
 	@JoinColumn(name="gerente_id")
 	private Gerente gerente;
 
-	
+	@NotNull(message = "Fornecedor_id obrigatório")
 	@ManyToOne
 	@JoinColumn(name="fornecedor_id")
 	private Fornecedor fornecedor;
 
+	@NotNull(message = "Reposicao_id obrigatório")
 	@OneToMany(mappedBy = "id.reposicao")
 	private Collection<ItemReposicao> itens_reposicao = new ArrayList<>();
 

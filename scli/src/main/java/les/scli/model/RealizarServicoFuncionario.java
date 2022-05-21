@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.*;
 
@@ -29,10 +30,12 @@ public class RealizarServicoFuncionario implements Serializable {
 	@NotBlank(message = "Status obrigatório")
 	private Boolean status;
 
+	@NotNull(message = "Servico_id obrigatório")
 	@ManyToOne
 	@JoinColumn(name="servico_id")
 	private Servico servico;
 	
+	@NotNull(message = "Funcionario_id obrigatório")
 	@ManyToOne
 	@JoinColumn(name="funcionario_id")
 	private Funcionario funcionario;

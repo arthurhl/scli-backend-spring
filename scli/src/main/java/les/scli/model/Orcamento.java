@@ -37,11 +37,12 @@ public class Orcamento implements Serializable {
 	@NotBlank(message = "Descrição obrigatória")
 	private String descricao;
 
+	@NotBlank(message = "Client_id obrigatório")
 	@ManyToOne
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 
-	
+	@NotBlank(message = "Funcionario_id obrigatório")
 	@ManyToOne
 	@JoinColumn(name="funcionario_id")
 	private Funcionario funcionario;

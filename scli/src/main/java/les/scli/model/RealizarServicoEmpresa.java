@@ -33,11 +33,12 @@ public class RealizarServicoEmpresa implements Serializable {
 	@NotBlank(message = "Status obrigatório")
 	private Boolean status;
 	
+	@NotBlank(message = "Service_id obrigatório")
 	@ManyToOne
 	@JoinColumn(name="servico_id")
 	private Servico servico;
 
-	
+	@NotBlank(message = "EmpresaTerceirizada_id obrigatório")
 	@ManyToOne
 	@JoinColumn(name="empresaTerceirizada_id")
 	private EmpresaTerceirizada empresaTerceirizada;

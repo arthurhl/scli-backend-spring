@@ -3,10 +3,6 @@ package les.scli.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-<<<<<<< HEAD
-
-=======
->>>>>>> acc96e738255eba7dd938b2227382c3b2a4a4500
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -42,12 +38,15 @@ public class Produto implements Serializable {
 	@NotBlank(message = "Descrição obrigatória")
 	private String descricao;
 
+	@NotBlank(message = "Pruduto_id obrigatório")
 	@OneToMany(mappedBy = "id.produto")
 	private Collection<ItemPedido> itens_produto_pedido = new ArrayList<>();
 	
+	@NotBlank(message = "Pruduto_id obrigatório")
 	@OneToMany(mappedBy = "id.produto")
 	private Collection<ItemReposicao> itens_reposicao = new ArrayList<>();
 	
+	@NotBlank(message = "Pruduto_fornecedor obrigatório")
 	@ManyToMany
 	@JoinTable(name="produto_fornecedor",
 		joinColumns = @JoinColumn(name="produto_id"),
