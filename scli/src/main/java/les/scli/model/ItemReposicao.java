@@ -1,7 +1,6 @@
 package les.scli.model;
 
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
 public class ItemReposicao {

@@ -3,26 +3,39 @@ package les.scli.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+
+import lombok.*;
+
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(of = { "id" })
 public class Produto implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@Column()
+	@NotBlank(message = "Nome obrigatório")
 	private String nome;
 
 	@Column()
+	@NotBlank(message = "Valor obrigatório")
 	private Double valor;
 
 	@Column()
+	@NotBlank(message = "Quantidade obrigatória")
 	private Integer quantidade;
 
 	@Column()
+	@NotBlank(message = "Descrição obrigatória")
 	private String descricao;
 
 	@OneToMany(mappedBy = "id.produto")

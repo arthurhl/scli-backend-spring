@@ -2,6 +2,8 @@ package les.scli.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+
 import lombok.*;
 
 @Entity
@@ -18,6 +20,7 @@ public class Servico implements Serializable {
 	private Integer id;
 
 	@Column()
+	@NotBlank(message = "Status obrigatório")
 	private Boolean status;
 
 	@OneToOne
