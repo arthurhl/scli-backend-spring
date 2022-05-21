@@ -9,7 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(of = { "id" })
-public class Produto implements Serializable {
+public class Reposicao implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -18,15 +18,12 @@ public class Produto implements Serializable {
 	private Integer id;
 
 	@Column()
-	private String nome;
-
-	@Column()
-	private Double valor;
-
-	@Column()
 	private Integer quantidade;
 
 	@Column()
-	private String descricao;
+	private Gerente gerente;
+
+	@Column()
+	private Fornecedor fornecedor;
 
 }
