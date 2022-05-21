@@ -2,7 +2,6 @@ package les.scli.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.validation.constraints.*;
 import lombok.*;
 
 @Entity
