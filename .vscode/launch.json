@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ScliApplication<scli>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "les.scli.ScliApplication",
+            "projectName": "scli",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
