@@ -1,19 +1,12 @@
 package les.scli.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.*;
-import javax.validation.constraints.*;
-import lombok.*;
-
 @Entity
-@Data 
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode(of = { "id" })
 public class Produto implements Serializable {
-
-	private static final long serialVersionUID = 1L;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
@@ -29,5 +22,8 @@ public class Produto implements Serializable {
 
 	@Column()
 	private String descricao;
+
+	@OneToMany(mappedBy = "id.pedido")
+	private Set<ItemPedido> itens = new HashSet<>();
 
 }
