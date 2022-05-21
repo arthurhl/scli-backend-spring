@@ -3,9 +3,9 @@ package les.scli.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import les.scli.model.EmpresaTerceirizada;
+import les.scli.model.Reposicao;
 
 @Repository
-public interface EmpresaTerceirizadaRepository extends JpaRepository<EmpresaTerceirizada, Integer>{
+public interface ReposicaoRepository extends JpaRepository<Reposicao, Integer>{
     
 }
