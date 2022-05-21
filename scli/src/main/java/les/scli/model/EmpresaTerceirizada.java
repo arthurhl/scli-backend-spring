@@ -30,6 +30,7 @@ public class EmpresaTerceirizada implements Serializable {
 
 	@Column()
 	@NotBlank(message = "Uf obrigatório")
+	@Size(min = 2, max = 2, message = "Uf inválido")
 	private String uf;
 
 	@Column()

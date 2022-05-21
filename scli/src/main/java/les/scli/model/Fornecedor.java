@@ -1,34 +1,48 @@
 package les.scli.model;
 
 import java.io.Serializable;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.*;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode(of = {"id"}) 
 public class Fornecedor implements Serializable {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Integer id;
 
-  @Column()
-  private String nome;
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
-  @Column()
-  private String cpf;
+	@Column()
+	@NotBlank(message = "Nome obrigatório")
+	private String nome;
 
-  @Column()
-  private String uf;
+	@Column(length=11)
+	@NotBlank(message = "CPF obrigatório")
+	@Size(min=11,max=11, message="CPF inválido")
+	private String cpf;
 
-  @Column()
-  private String cidade;
+	@Column()
+	@NotBlank(message = "Uf obrigatório")
+  @Size(min = 2, max = 2, message = "Uf inválido")
+	private String uf;
 
-  @Column()
-  private String bairro;
+	@Column()
+	@NotBlank(message = "Cidade obrigatório")
+	private String cidade;
 
-  @Column()
-  private String rua;
+	@Column()
+	@NotBlank(message = "Bairro obrigatório")
+	private String bairro;
+
+	@Column()
+	@NotBlank(message = "Rua obrigatório")
+	private String rua;
 }
