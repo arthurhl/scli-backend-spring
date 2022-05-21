@@ -20,11 +20,14 @@ public class RealizarServicoEmpresa implements Serializable {
 
 	@Column()
 	private Boolean status;
-
-	@Column()
+	
+	@ManyToOne
+	@JoinColumn(name="servico_id")
 	private Servico servico;
 
-	@Column()
+	
+	@ManyToOne
+	@JoinColumn(name="empresaTerceirizada_id")
 	private EmpresaTerceirizada empresaTerceirizada;
 
 }

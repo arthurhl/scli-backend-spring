@@ -18,10 +18,11 @@ public class RealizarServicoFuncionario implements Serializable {
 	@Column()
 	private Boolean status;
 
-	@Column()
-	private Funcionario funcionario;
-
-	@Column()
+	@ManyToOne
+	@JoinColumn(name="servico_id")
 	private Servico servico;
-
+	
+	@ManyToOne
+	@JoinColumn(name="funcionario_id")
+	private Funcionario funcionario;
 }

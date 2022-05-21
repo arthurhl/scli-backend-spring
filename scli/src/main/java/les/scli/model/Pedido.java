@@ -1,8 +1,8 @@
 package les.scli.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.persistence.*;
 @Entity
@@ -20,11 +20,11 @@ public class Pedido implements Serializable {
 	@Column()
 	private String telefone;
 
-	@Column()
+	@ManyToOne
+	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 
 	@OneToMany(mappedBy = "id.pedido")
-	private Set<ItemPedido> itens_produto_pedido  = new HashSet<>();
-
+	private Collection<ItemPedido> itens_produto_pedido  = new ArrayList<>();
 
 }

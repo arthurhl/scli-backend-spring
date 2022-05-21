@@ -1,6 +1,8 @@
 package les.scli.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,9 +26,14 @@ public class Produto implements Serializable {
 	private String descricao;
 
 	@OneToMany(mappedBy = "id.produto")
-	private Set<ItemPedido> itens_produto_pedido = new HashSet<>();
+	private Collection<ItemPedido> itens_produto_pedido = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "id.produto")
-	private Set<ItemReposicao> itens_reposicao = new HashSet<>();
-
+	private Collection<ItemReposicao> itens_reposicao = new ArrayList<>();
+	
+	@ManyToMany
+	@JoinTable(name="produto_fornecedor",
+		joinColumns = @JoinColumn(name="produto_id"),
+		inverseJoinColumns = @JoinColumn(name="fornecedor_id"))
+	    private Collection<Fornecedor> fornecedores = new ArrayList<>();	
 }

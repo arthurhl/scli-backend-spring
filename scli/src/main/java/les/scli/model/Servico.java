@@ -20,7 +20,7 @@ public class Servico implements Serializable {
 	@Column()
 	private Boolean status;
 
-	@Column()
+	@OneToOne
+	@JoinColumn(name="orcamento_id")
 	private Orcamento orcamento;
-
 }

@@ -1,8 +1,8 @@
 package les.scli.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.persistence.*;
 
@@ -16,13 +16,17 @@ public class Reposicao implements Serializable {
 	@Column()
 	private Integer quantidade;
 
-	@Column()
+	
+	@ManyToOne
+	@JoinColumn(name="gerente_id")
 	private Gerente gerente;
 
-	@Column()
+	
+	@ManyToOne
+	@JoinColumn(name="fornecedor_id")
 	private Fornecedor fornecedor;
 
 	@OneToMany(mappedBy = "id.reposicao")
-	private Set<ItemReposicao> itens_reposicao = new HashSet<>();
+	private Collection<ItemReposicao> itens_reposicao = new ArrayList<>();
 
 }

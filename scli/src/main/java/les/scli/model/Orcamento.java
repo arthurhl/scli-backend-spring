@@ -16,16 +16,20 @@ public class Orcamento implements Serializable {
 
 	@Column()
 	private Date dataInicio;
+
 	@Column()
 	private Date dataTermino;
 
 	@Column()
 	private String descricao;
 
-	@Column()
+	@ManyToOne
+	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 
-	@Column()
+	
+	@ManyToOne
+	@JoinColumn(name="funcionario_id")
 	private Funcionario funcionario;
 
 }
