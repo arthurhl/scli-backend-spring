@@ -23,11 +23,11 @@ public class RealizarServicoFuncionario implements Serializable {
 	private Integer id;
 
 	@Column()
-	@NotBlank(message = "Data obrigatória")
+	@NotNull(message = "Data obrigatória")
 	private Date dataInicio;
 
 	@Column()
-	@NotBlank(message = "Status obrigatório")
+	@NotNull(message = "Status obrigatório")
 	private Boolean status;
 
 	@NotNull(message = "Servico_id obrigatório")

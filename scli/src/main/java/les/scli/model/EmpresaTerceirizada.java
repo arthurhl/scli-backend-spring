@@ -24,7 +24,7 @@ public class EmpresaTerceirizada implements Serializable {
 	private String nome;
 
 	@Column()
-	@Size(min=14,max=14, message="CPF inválido")
+	@Size(min=14,max=14, message="Cnpj inválido")
 	@NotBlank(message = "Cnpj obrigatório")
 	private String cnpj;
 

@@ -21,7 +21,7 @@ public class Servico implements Serializable {
 	private Integer id;
 
 	@Column()
-	@NotBlank(message = "Status obrigatório")
+	@NotNull(message = "Status obrigatório")
 	private Boolean status;
 
 	@NotNull(message = "Orcamento_id obrigatório")

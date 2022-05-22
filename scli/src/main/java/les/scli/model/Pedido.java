@@ -6,6 +6,7 @@ import java.util.Collection;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.*;
 
@@ -27,20 +28,28 @@ public class Pedido implements Serializable {
 	private String endereco;
 
 	@Column()
-	@NotBlank(message = "Valor obrigatório")
+	@NotNull(message = "Valor obrigatório")
 	private Double valor;
 
 	@Column()
 	@NotBlank(message = "Telefone obrigatório")
 	private String telefone;
 
-	@NotBlank(message = "Client_id obrigatório")
+	@NotNull(message = "Client_id obrigatório")
 	@ManyToOne
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 
-	@NotBlank(message = "Pedido_id obrigatório")
+	@NotNull(message = "Pedido_id obrigatório")
 	@OneToMany(mappedBy = "id.pedido")
 	private Collection<ItemPedido> itens_produto_pedido  = new ArrayList<>();
-
+	
+	@Builder
+	public Pedido(Integer id, String endereco, Double valor, String telefone, Cliente cliente) {
+		this.id = id;
+		this.endereco = endereco;
+		this.valor = valor;
+		this.telefone = telefone;
+		this.cliente = cliente;
+	}
 }

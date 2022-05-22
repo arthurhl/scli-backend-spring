@@ -6,6 +6,7 @@ import java.util.Collection;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.*;
 
@@ -27,29 +28,38 @@ public class Produto implements Serializable {
 	private String nome;
 
 	@Column()
-	@NotBlank(message = "Valor obrigatório")
+	@NotNull(message = "Valor obrigatório")
 	private Double valor;
 
 	@Column()
-	@NotBlank(message = "Quantidade obrigatória")
+	@NotNull(message = "Quantidade obrigatória")
 	private Integer quantidade;
 
 	@Column()
 	@NotBlank(message = "Descrição obrigatória")
 	private String descricao;
 
-	@NotBlank(message = "Pruduto_id obrigatório")
+	@NotNull(message = "Pruduto_id obrigatório")
 	@OneToMany(mappedBy = "id.produto")
 	private Collection<ItemPedido> itens_produto_pedido = new ArrayList<>();
 	
-	@NotBlank(message = "Pruduto_id obrigatório")
+	@NotNull(message = "Pruduto_id obrigatório")
 	@OneToMany(mappedBy = "id.produto")
 	private Collection<ItemReposicao> itens_reposicao = new ArrayList<>();
 	
-	@NotBlank(message = "Pruduto_fornecedor obrigatório")
+	@NotNull(message = "Pruduto_fornecedor obrigatório")
 	@ManyToMany
 	@JoinTable(name="produto_fornecedor",
 		joinColumns = @JoinColumn(name="produto_id"),
 		inverseJoinColumns = @JoinColumn(name="fornecedor_id"))
-	    private Collection<Fornecedor> fornecedores = new ArrayList<>();	
+	private Collection<Fornecedor> fornecedores = new ArrayList<>();	
+
+	@Builder
+	public Produto(Integer id, String nome, Double valor, Integer quantidade, String descricao) {
+		this.id = id;
+		this.nome = nome;
+		this.valor = valor;
+		this.quantidade = quantidade;
+		this.descricao = descricao;
+	}
 }

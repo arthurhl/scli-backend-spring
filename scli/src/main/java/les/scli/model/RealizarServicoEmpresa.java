@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.*;
 
@@ -22,23 +23,19 @@ public class RealizarServicoEmpresa implements Serializable {
 	private Integer id;
 
 	@Column()
-	@NotBlank(message = "Empresa obrigatória")
-	private String empresa;
-
-	@Column()
-	@NotBlank(message = "Data obrigatória")
+	@NotNull(message = "Data obrigatória")
 	private Date dataInicio;
 
 	@Column()
-	@NotBlank(message = "Status obrigatório")
+	@NotNull(message = "Status obrigatório")
 	private Boolean status;
 	
-	@NotBlank(message = "Service_id obrigatório")
+	@NotNull(message = "Service_id obrigatório")
 	@ManyToOne
 	@JoinColumn(name="servico_id")
 	private Servico servico;
 
-	@NotBlank(message = "EmpresaTerceirizada_id obrigatório")
+	@NotNull(message = "EmpresaTerceirizada_id obrigatório")
 	@ManyToOne
 	@JoinColumn(name="empresaTerceirizada_id")
 	private EmpresaTerceirizada empresaTerceirizada;

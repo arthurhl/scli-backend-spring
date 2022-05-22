@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import lombok.*;
 
@@ -22,27 +24,28 @@ public class Orcamento implements Serializable {
 	private Integer id;
 
 	@Column()
-	@NotBlank(message = "Valor obrigatório")
-	private Double valor;
-
-	@Column()
-	@NotBlank(message = "Data obrigatória")
+	@NotNull(message = "Data obrigatória")
 	private Date dataInicio;
 
 	@Column()
-	@NotBlank(message = "Data obrigatória")
+	@NotNull(message = "Data obrigatória")
 	private Date dataTermino;
 
 	@Column()
 	@NotBlank(message = "Descrição obrigatória")
 	private String descricao;
 
-	@NotBlank(message = "Client_id obrigatório")
+	@Column()
+	@Min(value = 1, message = "Valor deve ser maior que zero")
+	@NotNull(message = "Valor obrigatório")
+	private Double valor;
+
+	@NotNull(message = "Client_id obrigatório")
 	@ManyToOne
 	@JoinColumn(name="cliente_id")
 	private Cliente cliente;
 
-	@NotBlank(message = "Funcionario_id obrigatório")
+	@NotNull(message = "Funcionario_id obrigatório")
 	@ManyToOne
 	@JoinColumn(name="funcionario_id")
 	private Funcionario funcionario;
