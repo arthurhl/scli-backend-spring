@@ -14,11 +14,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import les.scli.model.Funcionario;
-import les.scli.services.Funcionario.Service;
+import les.scli.services.FuncionarioService;
 import les.scli.services.exceptions.ConstraintException;
 
+//Rickison Entringer 
+
 @RestController
-@RequestMapping(value = "/Funcionario")
+@RequestMapping(value = "/funcionario")
 public class FuncionarioController {
     @Autowired
     private FuncionarioService service;
@@ -50,5 +52,4 @@ public class FuncionarioController {
             funcionario = service.update(funcionario);
         return ResponseEntity.ok().body(funcionario);
     }
-    
 }

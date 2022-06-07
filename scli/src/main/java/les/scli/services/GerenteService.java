@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import les.scli.model.Gerente;
 import les.scli.repositories.GerenteRepository;
-import les.scli.repositories.ReposicaoRepository;
 import les.scli.services.exceptions.DataIntegrityException;
 import les.scli.services.exceptions.ObjectNotFoundException;
 
@@ -18,8 +17,6 @@ public class GerenteService {
     @Autowired
     private GerenteRepository repositoryGerente;
 
-    @Autowired
-    private ReposicaoRepository repositoryReposicao;
     
     public Collection<Gerente> findAll() {
         return repositoryGerente.findAll();

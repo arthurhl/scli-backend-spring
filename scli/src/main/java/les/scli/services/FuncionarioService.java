@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import les.scli.model.Funcionario;
 import les.scli.repositories.FuncionarioRepository;
-import les.scli.repositories.ReposicaoRepository;
 import les.scli.services.exceptions.DataIntegrityException;
 import les.scli.services.exceptions.ObjectNotFoundException;
 
@@ -17,9 +16,6 @@ import les.scli.services.exceptions.ObjectNotFoundException;
 public class FuncionarioService {
     @Autowired
     private FuncionarioRepository repositoryFuncionario;
-
-    @Autowired
-    private ReposicaoRepository repositoryReposicao;
 
     public Collection<Funcionario> findAll() {
         return repositoryFuncionario.findAll();
