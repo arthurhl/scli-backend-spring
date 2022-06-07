@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import les.scli.model.Cliente;
 import les.scli.repositories.ClienteRepository;
-import les.scli.repositories.ReposicaoRepository;
 import les.scli.services.exceptions.DataIntegrityException;
 import les.scli.services.exceptions.ObjectNotFoundException;
 
@@ -17,9 +16,6 @@ import les.scli.services.exceptions.ObjectNotFoundException;
 public class ClienteService {
     @Autowired
     private ClienteRepository repositoryCliente;
-
-    @Autowired
-    private ReposicaoRepository repositoryReposicao;
 
     public Collection<Cliente> findAll() {
         return repositoryCliente.findAll();

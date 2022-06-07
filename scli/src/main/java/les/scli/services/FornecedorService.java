@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import les.scli.model.Fornecedor;
 import les.scli.repositories.FornecedorRepository;
-import les.scli.repositories.ReposicaoRepository;
 import les.scli.services.exceptions.DataIntegrityException;
 import les.scli.services.exceptions.ObjectNotFoundException;
 
@@ -17,9 +16,6 @@ import les.scli.services.exceptions.ObjectNotFoundException;
 public class FornecedorService {
   @Autowired
   private FornecedorRepository repositoryFornecedor;
-
-  @Autowired
-  private ReposicaoRepository repositoryReposicao;
 
   public Collection<Fornecedor> findAll() {
     return repositoryFornecedor.findAll();

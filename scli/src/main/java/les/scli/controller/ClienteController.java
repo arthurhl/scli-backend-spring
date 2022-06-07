@@ -50,5 +50,4 @@ public class ClienteController {
         cliente = service.update(cliente);
         return ResponseEntity.ok().body(cliente);
     }
-    
 }
