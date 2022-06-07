@@ -30,10 +30,10 @@ public class ClienteService {
         }
     }
 
-    public Cliente insert(Cliente Cliente) {
-        Cliente.setId(null);
+    public Cliente insert(Cliente cliente) {
+        cliente.setId(null);
         try {
-            return repositoryCliente.save(Cliente);
+            return repositoryCliente.save(cliente);
         } catch (DataIntegrityViolationException e) {
             throw new DataIntegrityException("Campo(s) obrigatório(s) do Cliente não foi(foram) preenchido(s)");
         }
@@ -48,10 +48,10 @@ public class ClienteService {
         }
     }
 
-    public Cliente update(Cliente Cliente) {
-        findById(Cliente.getId());
+    public Cliente update(Cliente cliente) {
+        findById(cliente.getId());
         try {
-            return repositoryCliente.save(Cliente);
+            return repositoryCliente.save(cliente);
         } catch (DataIntegrityViolationException e) {
             throw new DataIntegrityException("Campo(s) obrigatório(s) do Cliente não foi(foram) preenchido(s)");
         }
