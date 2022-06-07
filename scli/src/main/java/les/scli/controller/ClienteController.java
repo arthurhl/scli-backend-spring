@@ -18,7 +18,6 @@ import les.scli.services.ClienteService;
 import les.scli.services.exceptions.ConstraintException;
 
 @RestController
-// Jonatan bandeira
 @RequestMapping(value = "/cliente")
 public class ClienteController {
     @Autowired
@@ -51,5 +50,5 @@ public class ClienteController {
         cliente = service.update(cliente);
         return ResponseEntity.ok().body(cliente);
     }
-
+    
 }
