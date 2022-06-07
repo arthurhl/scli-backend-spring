@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import les.scli.model.Funcionario;
-import les.scli.services.Funcionario.Service;
+import les.scli.services.FuncionarioService;
+
 import les.scli.services.exceptions.ConstraintException;
 
 @RestController
