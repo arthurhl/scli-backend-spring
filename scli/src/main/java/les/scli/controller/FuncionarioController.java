@@ -35,7 +35,7 @@ public class FuncionarioController {
     public ResponseEntity<Funcionario> insert(@Valid @RequestBody Funcionario funcionario, BindingResult br) {
         if (br.hasErrors())
             throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
-            funcionario = service.insert(funcionario);
+        funcionario = service.insert(funcionario);
         return ResponseEntity.ok().body(funcionario);
     }
 
@@ -49,7 +49,7 @@ public class FuncionarioController {
     public ResponseEntity<Funcionario> update(@Valid @RequestBody Funcionario funcionario, BindingResult br) {
         if (br.hasErrors())
             throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
-            funcionario = service.update(funcionario);
+        funcionario = service.update(funcionario);
         return ResponseEntity.ok().body(funcionario);
     }
 }

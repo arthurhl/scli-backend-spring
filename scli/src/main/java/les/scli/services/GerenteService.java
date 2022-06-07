@@ -17,23 +17,23 @@ public class GerenteService {
     @Autowired
     private GerenteRepository repositoryGerente;
 
-    
     public Collection<Gerente> findAll() {
         return repositoryGerente.findAll();
     }
 
     public void findById(Integer id) {
-    	try {
-        	repositoryGerente.findById(id).get();
+        try {
+            repositoryGerente.findById(id).get();
         } catch (NoSuchElementException e) {
-        	throw new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Gerente.class.getName());
+            throw new ObjectNotFoundException(
+                    "Objeto não encontrado! Id: " + id + ", Tipo: " + Gerente.class.getName());
         }
     }
-    
+
     public Gerente insert(Gerente gerente) {
         gerente.setId(null);
         try {
-        	return repositoryGerente.save(gerente);
+            return repositoryGerente.save(gerente);
         } catch (DataIntegrityViolationException e) {
             throw new DataIntegrityException("Campo(s) obrigatório(s) do Gerente não foi(foram) preenchido(s)");
         }
@@ -51,7 +51,7 @@ public class GerenteService {
     public Gerente update(Gerente gerente) {
         findById(gerente.getId());
         try {
-        	return repositoryGerente.save(gerente);
+            return repositoryGerente.save(gerente);
         } catch (DataIntegrityViolationException e) {
             throw new DataIntegrityException("Campo(s) obrigatório(s) do Gerente não foi(foram) preenchido(s)");
         }
