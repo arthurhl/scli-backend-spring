@@ -17,6 +17,8 @@ import les.scli.model.Fornecedor;
 import les.scli.services.FornecedorService;
 import les.scli.services.exceptions.ConstraintException;
 
+// Arthur  Hülle 
+
 @RestController
 @RequestMapping(value = "/fornecedor")
 public class FornecedorController {
