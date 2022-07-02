@@ -28,6 +28,10 @@ public class RealizarServicoEmpresa implements Serializable {
 	@Column()
 	@NotNull(message = "Status obrigatório")
 	private Boolean status;
+
+	@Column()
+	@NotNull(message = "Feedback obrigatório")
+	private Boolean feedback;
 	
 	@NotNull(message = "Service_id obrigatório")
 	@ManyToOne
