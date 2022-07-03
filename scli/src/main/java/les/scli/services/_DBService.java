@@ -113,11 +113,11 @@ public class _DBService {
         Servico ser1 = new Servico(null, false, orc1);
         Servico ser2 = new Servico(null, false, orc2);
 
-        RealizarServicoFuncionario rsf1 = new RealizarServicoFuncionario(null, sdf.parse("2022-01-01"), false, ser1, fun1);
-        RealizarServicoFuncionario rsf2 = new RealizarServicoFuncionario(null, sdf.parse("2022-01-01"), false, ser2, fun2);
+        RealizarServicoFuncionario rsf1 = new RealizarServicoFuncionario(null, sdf.parse("2022-01-01"), false, false, ser1, fun1);
+        RealizarServicoFuncionario rsf2 = new RealizarServicoFuncionario(null, sdf.parse("2022-01-01"), false, false, ser2, fun2);
 
-        RealizarServicoEmpresa rse1 = new RealizarServicoEmpresa(null, sdf.parse("2022-01-01"), false, false, ser1, emp1);
-        RealizarServicoEmpresa rse2 = new RealizarServicoEmpresa(null, sdf.parse("2022-01-01"), false, false, ser2, emp2);
+        RealizarServicoEmpresa rse1 = new RealizarServicoEmpresa(null, sdf.parse("2022-01-01"), false, false, false, ser1, emp1);
+        RealizarServicoEmpresa rse2 = new RealizarServicoEmpresa(null, sdf.parse("2022-01-01"), false, false, false, ser2, emp2);
 
         Pedido ped1 = new Pedido(null, "Endereco1", 10.00, "28123123123",cli1);
         Pedido ped2 = new Pedido(null, "Endereco2", 10.00, "28123123123",cli2);

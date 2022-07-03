@@ -29,6 +29,10 @@ public class RealizarServicoFuncionario implements Serializable {
 	@NotNull(message = "Status obrigatório")
 	private Boolean status;
 
+	@Column()
+	@NotNull(message = "Status obrigatório")
+	private Boolean debito;
+
 	@NotNull(message = "Servico_id obrigatório")
 	@ManyToOne
 	@JoinColumn(name="servico_id")
