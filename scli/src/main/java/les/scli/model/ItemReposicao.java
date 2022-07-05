@@ -5,6 +5,8 @@ import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.*;
 @Entity
 @Data
@@ -14,6 +16,7 @@ import lombok.*;
 public class ItemReposicao implements Serializable{
     private static final long serialVersionUID = 1L;
 
+    @JsonIgnore
     @EmbeddedId
     private ItemReposicaoPK id = new ItemReposicaoPK();
 
@@ -27,5 +30,22 @@ public class ItemReposicao implements Serializable{
         this.id.setReposicao(reposicao);
         this.quantidade = quantidade;
     }
+    
+    
+    public Produto getProduto() {
+        return id.getProduto();
+    }
 
+    public void setProduto(Produto produto) {
+        id.setProduto(produto);
+    }
+
+    @JsonIgnore
+    public Reposicao getReposicao() {
+        return id.getReposicao();
+    }
+
+    public void setReposicao(Reposicao reposicao) {
+        id.setReposicao(reposicao);
+    }
 }

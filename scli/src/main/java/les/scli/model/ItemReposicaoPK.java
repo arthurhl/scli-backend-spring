@@ -10,16 +10,17 @@ import lombok.*;
 
 @Embeddable
 @Data
-@EqualsAndHashCode(of = {"produto", "reposicao"})
+@EqualsAndHashCode(of = {"reposicao","produto"})
 public class ItemReposicaoPK implements Serializable {
     
     private static final long serialVersionUID = 1L;
+    
+    @ManyToOne
+    @JoinColumn(name="reposicao_id")
+    private Reposicao reposicao;
 
     @ManyToOne
     @JoinColumn(name="produto_id")
     private Produto produto;
 
-    @ManyToOne
-    @JoinColumn(name="reposicao_id")
-    private Reposicao reposicao;
 }

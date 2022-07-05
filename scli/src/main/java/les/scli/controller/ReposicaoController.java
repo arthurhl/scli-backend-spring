@@ -13,29 +13,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import les.scli.model.Gerente;
-import les.scli.services.GerenteService;
+import les.scli.model.Reposicao;
+import les.scli.services.ReposicaoService;
 import les.scli.services.exceptions.ConstraintException;
+
 
 // Kaique Nascente
 @RestController
-@RequestMapping(value="/gerente")
-public class GerenteController {
+@RequestMapping(value="/reposicao")
+public class ReposicaoController {
     @Autowired
-    private GerenteService service;
+    private ReposicaoService service;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Collection<Gerente>> findAll() {
-        Collection<Gerente> collection = service.findAll();
+    public ResponseEntity<Collection<Reposicao>> findAll() {
+        Collection<Reposicao> collection = service.findAll();
         return ResponseEntity.ok().body(collection);
     }
     
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Gerente> insert(@Valid @RequestBody Gerente gerente, BindingResult br) {
+    public ResponseEntity<Reposicao> insert(@Valid @RequestBody Reposicao reposicao, BindingResult br) {
         if (br.hasErrors())
         	throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
-        gerente = service.insert(gerente);
-        return ResponseEntity.ok().body(gerente);
+        reposicao = service.insert(reposicao);
+        return ResponseEntity.ok().body(reposicao);
     } 
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
@@ -45,10 +46,10 @@ public class GerenteController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity<Gerente> update(@Valid @RequestBody Gerente gerente, BindingResult br) {
+    public ResponseEntity<Reposicao> update(@Valid @RequestBody Reposicao reposicao, BindingResult br) {
         if (br.hasErrors())
         	throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
-        gerente = service.update(gerente);
-        return ResponseEntity.ok().body(gerente);
+        reposicao = service.update(reposicao);
+        return ResponseEntity.ok().body(reposicao);
     }
 }
