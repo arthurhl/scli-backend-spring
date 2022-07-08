@@ -114,11 +114,10 @@ public class _DBService {
         Orcamento orc2 = new Orcamento(null, sdf.parse("2022-01-01"), sdf.parse("2022-01-01"), "Descricao2", 10.00,
                 cli2, fun2);
 
-        Reposicao rep1 = new Reposicao(null, 10, ger1, for1);
-        Reposicao rep2 = new Reposicao(null, 10, ger2, for2);
+        Reposicao rep1 = new Reposicao(null, 1, ger1, for1);
 
-        Produto pro1 = new Produto(null, "Produto1", 10.00, "Descricao1");
-        Produto pro2 = new Produto(null, "Produto2", 10.00, "Descricao2");
+        Produto pro1 = new Produto(null, "Produto1", 500.00, "Descricao1");
+        Produto pro2 = new Produto(null, "Produto2", 9.99, "Descricao2");
 
         Servico ser1 = new Servico(null, false, orc1);
         Servico ser2 = new Servico(null, false, orc2);
@@ -140,8 +139,7 @@ public class _DBService {
         ItemPedido itp2 = new ItemPedido(ped2, pro2, 10.00);
 
         ItemReposicao itr1 = new ItemReposicao(pro1, rep1, 1);
-        ItemReposicao itr2 = new ItemReposicao(pro2, rep2, 2);
-
+     
         pro1.setFornecedores(Arrays.asList(for1));
         pro2.setFornecedores(Arrays.asList(for2));
 
@@ -151,13 +149,13 @@ public class _DBService {
         funcionarioRepository.saveAll(Arrays.asList(fun1, fun2));
         empresaTerceirizadaRepository.saveAll(Arrays.asList(emp1, emp2));
         orcamentoRepository.saveAll(Arrays.asList(orc1, orc2));
-        reposicaoRepository.saveAll(Arrays.asList(rep1, rep2));
+        reposicaoRepository.saveAll(Arrays.asList(rep1));
         produtoRepository.saveAll(Arrays.asList(pro1, pro2));
         servicoRepository.saveAll(Arrays.asList(ser1, ser2));
         realizarServicoFuncionarioRepository.saveAll(Arrays.asList(rsf1, rsf2));
         realizarServicoEmpresaRepository.saveAll(Arrays.asList(rse1, rse2));
         pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
         itemPedidoRepository.saveAll(Arrays.asList(itp1, itp2));
-        itemReposicaoRepository.saveAll(Arrays.asList(itr1, itr2));
+        itemReposicaoRepository.saveAll(Arrays.asList(itr1));
     }
 }

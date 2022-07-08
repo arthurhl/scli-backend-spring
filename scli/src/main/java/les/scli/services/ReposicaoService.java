@@ -11,13 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import les.scli.model.ItemReposicao;
 import les.scli.model.Reposicao;
-
 import les.scli.repositories.ReposicaoRepository;
+import les.scli.services.exceptions.BusinessRuleException;
 import les.scli.services.exceptions.DataIntegrityException;
 import les.scli.services.exceptions.ObjectNotFoundException;
-import les.scli.utils.WeeklyExpense;
-import les.scli.utils.WeeklyPurchase;
 
+// Kaique Nascente Januario
 @Service
 public class ReposicaoService {
     @Autowired
@@ -31,18 +30,17 @@ public class ReposicaoService {
         try {
             repositoryReposicao.findById(id).get();
         } catch (NoSuchElementException e) {
-            throw new ObjectNotFoundException(
-                    "Objeto não encontrado! Id: " + id + ", Tipo: " + Reposicao.class.getName());
+            throw new ObjectNotFoundException("Objeto não encontrado! Id: " + id + ", Tipo: " + Reposicao.class.getName());
         }
     }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Reposicao insert(Reposicao reposicao) {
         try {
-            // verificarRegrasDeNegocio(reposicao);
-            
             reposicao.setId(null);
            
+            verificarRegrasDeNegocio(reposicao);
+
             for(ItemReposicao item: reposicao.getItens()) {
                 item.setReposicao(reposicao);
                 item.setProduto(item.getProduto());
@@ -68,6 +66,9 @@ public class ReposicaoService {
     public Reposicao update(Reposicao reposicao) {
         try {
             findById(reposicao.getId());
+           
+            verificarRegrasDeNegocio(reposicao); 
+            
             for(ItemReposicao item: reposicao.getItens()) {
                 item.setReposicao(reposicao);
                 item.setProduto(item.getProduto());
@@ -79,22 +80,43 @@ public class ReposicaoService {
         }
     }
 
-    public void  verificarRegrasDeNegocio (Reposicao reposicao) {
+    public void  verificarRegrasDeNegocio (Reposicao reposicao) { 
         // Regra de Negócio 1: Gerente terá limite de 1.000,00 semanal.
-        Integer idGerente = reposicao.getGerente().getId();
-        Collection<WeeklyExpense> weeklyExpense = weeklyExpenseByManager(idGerente);
+        Double weeklyExpense = repositoryReposicao.weeklyExpenseByManager();
 
-        // Regra de Negócio 2: Gerente poderá comprar 10 produtos por Fornecedor semanal.
+        if(weeklyExpense != null) {
+            ItemReposicao item = (ItemReposicao) reposicao.getItens().toArray()[0];
+            Double verifyWeeklyExpense = weeklyExpense + (item.getProduto().getValor() * reposicao.getQuantidade());
+
+            if(verifyWeeklyExpense > 1000) {
+                throw new BusinessRuleException("Limite semanal excedido por R$"+(verifyWeeklyExpense - 1000)+"!");
+            }
+        } else {
+            ItemReposicao item = (ItemReposicao) reposicao.getItens().toArray()[0];
+            Double verifyWeeklyExpense = reposicao.getQuantidade() * item.getProduto().getValor();
+            System.out.println(verifyWeeklyExpense);
+            if(verifyWeeklyExpense > 1000) {
+                throw new BusinessRuleException("Limite semanal excedido por sR$"+(verifyWeeklyExpense - 1000)+"!");
+            }
+        }
+
+        // Regra de Negócio 2: Gerete poderá comprar 10 produtos por Fornecedor semanal.
         Integer idFornecedor = reposicao.getFornecedor().getId();
-        Collection<WeeklyPurchase> weeklyPurchase = weeklyPurchaseBySupplier(idFornecedor);
-    }
-
-    public Collection<WeeklyExpense> weeklyExpenseByManager(Integer idGerente) {
-        return repositoryReposicao.weeklyExpenseByManager(idGerente);
-    }
+        Integer weeklyPurchase = repositoryReposicao.weeklyPurchaseBySupplier(idFornecedor);
+        
+        if(weeklyPurchase != null) {
+            Integer verifyWeeklyPurchase =  weeklyPurchase + reposicao.getQuantidade();
     
-    public Collection<WeeklyPurchase> weeklyPurchaseBySupplier(Integer idFornecedor) {
-        return repositoryReposicao.weeklyPurchaseBySupplier(idFornecedor);
+            if(verifyWeeklyPurchase > 10) {
+                throw new BusinessRuleException("Reposição semanal do fornecedor excedido por "+(verifyWeeklyPurchase - 10)+" itens!");
+            }
+        } else {
+            Integer verifyWeeklyPurchase =  reposicao.getQuantidade();
+
+            if (verifyWeeklyPurchase > 10) {
+                throw new BusinessRuleException("Reposição semanal do fornecedor excedido por "+(verifyWeeklyPurchase - 10)+" itens!");
+            }
+        }
     }
 }
 
