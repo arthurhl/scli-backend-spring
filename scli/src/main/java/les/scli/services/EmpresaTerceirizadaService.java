@@ -16,7 +16,7 @@ import les.scli.services.exceptions.ObjectNotFoundException;
 public class EmpresaTerceirizadaService {
     @Autowired
     private EmpresaTerceirizadaRepository repositoryEmpresaTerceirizada;
-
+    
     public Collection<EmpresaTerceirizada> findAll() {
         return repositoryEmpresaTerceirizada.findAll();
     }
