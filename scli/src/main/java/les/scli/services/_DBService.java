@@ -147,17 +147,17 @@ public class _DBService {
                 RealizarServicoEmpresa rse1 = new RealizarServicoEmpresa(null, sdf.parse("2022-01-01"), false, false,
                                 false, ser1, emp1);
                 RealizarServicoEmpresa rse2 = new RealizarServicoEmpresa(null, sdf.parse("2022-01-01"), true, false,
-                                false, ser2, emp2);
+                                true, ser2, emp2);
                 RealizarServicoEmpresa rse3 = new RealizarServicoEmpresa(null, sdf.parse("2022-01-01"), true, false,
-                                false, ser1, emp1);
+                                true, ser1, emp1);
                 RealizarServicoEmpresa rse4 = new RealizarServicoEmpresa(null, sdf.parse("2022-01-01"), false, false,
                                 false, ser1, emp1);
                 RealizarServicoEmpresa rse5 = new RealizarServicoEmpresa(null, sdf.parse("2022-01-01"), true, false,
-                                false, ser2, emp2);
+                                true, ser2, emp2);
                 RealizarServicoEmpresa rse6 = new RealizarServicoEmpresa(null, sdf.parse("2022-01-01"), true, false,
-                                false, ser2, emp3);
+                                true, ser2, emp3);
                 RealizarServicoEmpresa rse7 = new RealizarServicoEmpresa(null, sdf.parse("2022-01-01"), true, false,
-                                false, ser2, emp2);
+                                true, ser2, emp2);
 
                 Pedido ped1 = new Pedido(null, 10.00, "28123123123", cli1);
                 Pedido ped2 = new Pedido(null, 10.00, "28123123123", cli2);
