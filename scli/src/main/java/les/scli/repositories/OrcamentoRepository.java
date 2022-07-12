@@ -18,7 +18,6 @@ public interface OrcamentoRepository extends JpaRepository<Orcamento, Integer> {
     + " = REL_EMP.SERVICO_ID AND ORC.CLIENTE_ID = 1 AND REL_EMP.DEBITO IS TRUE", nativeQuery = true)
     public Integer findDebito(Integer debito);
 
-    // 2. Só poderá realizar no máximo 3 orçamentos por dia;
     @Transactional(readOnly = true)
     @Query(value = "SELECT COUNT(ORCAMENTO.DATA_INICIO) FROM ORCAMENTO WHERE ORCAMENTO.ID < ?3", nativeQuery = true)
     public Integer findQtdOrcamento(Integer idCliente);  
