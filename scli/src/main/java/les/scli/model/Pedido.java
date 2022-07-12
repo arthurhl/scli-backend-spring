@@ -14,8 +14,8 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(of = { "id" })
-public class Pedido implements Serializable {
+@EqualsAndHashCode(callSuper = true)
+public class Pedido extends BaseEntity implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

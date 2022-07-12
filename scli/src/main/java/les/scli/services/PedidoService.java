@@ -35,6 +35,8 @@ public class PedidoService {
     try {
       pedido.setId(null);
 
+      pedido = verificarRegrasDeNegocio(pedido);
+
       for (ItemPedido item : pedido.getItens_pedido()) {
         item.setPedido(item.getPedido());
         item.setProduto(item.getProduto());
@@ -67,4 +69,32 @@ public class PedidoService {
       throw new DataIntegrityException("Campo(s) obrigatório(s) do Pedido não foi(foram) preenchido(s)");
     }
   }
+
+  public Pedido verificarRegrasDeNegocio(Pedido pedido) {
+    // Regra 1 -> Na terceira compra semanal desconto 25%
+    // Há 1 pedido cadastrado, para a regra valer teria que cadastrar mais 2 pedidos
+    Integer clientId = pedido.getCliente().getId();
+    Integer quantidade = repositoryPedido.getQuantidadeSemanal(clientId);
+
+    if (quantidade == 2) {
+      Double valor = pedido.getValor();
+      Double valorDesconto = valor - (valor * 0.25);
+      pedido.setValor(valorDesconto);
+    } else {
+      // Regra 2 -> A partir de 1000 gastos na semana recebe %5 desconto nas próximas
+      // compras
+      // Se o valor gasto semanal ultrapassar 1000 o desconto é aplicado em todas as
+      // compras da semana
+
+      Double total = repositoryPedido.maxValue(clientId);
+      if ((total + pedido.getValor()) > 1000) {
+        Double valor = pedido.getValor();
+        Double valorDesconto = valor - (valor * 0.05);
+        pedido.setValor(valorDesconto);
+      }
+    }
+
+    return pedido;
+  }
+
 }
