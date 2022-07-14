@@ -38,14 +38,16 @@ public class OrcamentoService {
 
         try {
             // 1. Não pode fazer o orçamento se o cliente estiver em débito;
-            Integer count = repositoryOrcamento.findDebito(debito);
-            if(count >= 3){
+            Integer count = repositoryOrcamento.findDebitoFuncionario(debito);
+            Integer countEmpresa = repositoryOrcamento.findDebitoEmpresa(debito);
+
+            if(count >= 3 || countEmpresa >= 3){
                 throw new BusinessRuleException("Cliente em débito!");
             }
 
             // 2. Só poderá realizar no máximo 3 orçamentos por dia;
             Integer qtdOrcamento = repositoryOrcamento.findQtdOrcamento(debito);
-            if(qtdOrcamento <= 3){
+            if(qtdOrcamento >= 3){
                 throw new BusinessRuleException("Numero maximo de três orçamentos alcançados!");
             }
             return repositoryOrcamento.save(orcamento);

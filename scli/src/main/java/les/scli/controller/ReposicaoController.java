@@ -34,7 +34,7 @@ public class ReposicaoController {
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Reposicao> insert(@Valid @RequestBody Reposicao reposicao, BindingResult br) {
         if (br.hasErrors())
-        	throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
+            throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
         reposicao = service.insert(reposicao);
         return ResponseEntity.ok().body(reposicao);
     } 
@@ -48,8 +48,20 @@ public class ReposicaoController {
     @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<Reposicao> update(@Valid @RequestBody Reposicao reposicao, BindingResult br) {
         if (br.hasErrors())
-        	throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
+            throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
         reposicao = service.update(reposicao);
         return ResponseEntity.ok().body(reposicao);
+    }
+
+    @RequestMapping(value="/ByPeriod/{beginning}/{end}", method = RequestMethod.GET)
+    public ResponseEntity<Collection<Reposicao>> listReplenishmentByPeriod() {
+        Collection<Reposicao> collection = service.findAll();
+        return ResponseEntity.ok().body(collection);
+    }
+
+    @RequestMapping(value="/ByProvider", method = RequestMethod.GET)
+    public ResponseEntity<Collection<Reposicao>> listReplenishmentByProvider() {
+        Collection<Reposicao> collection = service.findAll();
+        return ResponseEntity.ok().body(collection);
     }
 }
