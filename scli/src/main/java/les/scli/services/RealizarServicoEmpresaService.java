@@ -33,7 +33,7 @@ public class RealizarServicoEmpresaService {
     public RealizarServicoEmpresa insert(RealizarServicoEmpresa realizarServicoEmpresa) {
         realizarServicoEmpresa.setId(null);
         System.out.println(realizarServicoEmpresa);
-         Integer idEmpresa = realizarServicoEmpresa.getEmpresaTerceirizada().getId();
+        Integer idEmpresa = realizarServicoEmpresa.getEmpresaTerceirizada().getId();
         try {
             // 1. Se a empresa estiver com 3 serviços em aberto, informar ao usuário (será exibida uma mensagem para o usuário);
             Integer count = repositoryRealizarServicoEmpresa.findCountServico(idEmpresa);

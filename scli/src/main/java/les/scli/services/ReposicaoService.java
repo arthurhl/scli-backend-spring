@@ -38,7 +38,6 @@ public class ReposicaoService {
     public Reposicao insert(Reposicao reposicao) {
         try {
             reposicao.setId(null);
-           
             verificarRegrasDeNegocio(reposicao);
 
             for(ItemReposicao item: reposicao.getItens()) {
@@ -66,7 +65,7 @@ public class ReposicaoService {
     public Reposicao update(Reposicao reposicao) {
         try {
             findById(reposicao.getId());
-           
+            
             verificarRegrasDeNegocio(reposicao); 
             
             for(ItemReposicao item: reposicao.getItens()) {
@@ -94,9 +93,9 @@ public class ReposicaoService {
         } else {
             ItemReposicao item = (ItemReposicao) reposicao.getItens().toArray()[0];
             Double verifyWeeklyExpense = reposicao.getQuantidade() * item.getProduto().getValor();
-            System.out.println(verifyWeeklyExpense);
+
             if(verifyWeeklyExpense > 1000) {
-                throw new BusinessRuleException("Limite semanal excedido por sR$"+(verifyWeeklyExpense - 1000)+"!");
+                throw new BusinessRuleException("Limite semanal excedido por R$"+(verifyWeeklyExpense - 1000)+"!");
             }
         }
 
