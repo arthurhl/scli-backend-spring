@@ -133,6 +133,7 @@ public class _DBService {
 
                 Produto pro1 = new Produto(null, "Produto1", 500.00, "Descricao1");
                 Produto pro2 = new Produto(null, "Produto2", 9.99, "Descricao2");
+                Produto pro3 = new Produto(null, "Produto3", 1200.00, "Descricao3");
 
                 Servico ser1 = new Servico(null, false, orc1);
                 Servico ser2 = new Servico(null, false, orc2);
@@ -147,23 +148,23 @@ public class _DBService {
                 RealizarServicoEmpresa rse1 = new RealizarServicoEmpresa(null, sdf.parse("2022-01-01"), false, false,
                                 false, ser1, emp1);
                 RealizarServicoEmpresa rse2 = new RealizarServicoEmpresa(null, sdf.parse("2022-01-01"), true, false,
-                                false, ser2, emp2);
+                                true, ser2, emp2);
                 RealizarServicoEmpresa rse3 = new RealizarServicoEmpresa(null, sdf.parse("2022-01-01"), true, false,
-                                false, ser1, emp1);
+                                true, ser1, emp1);
                 RealizarServicoEmpresa rse4 = new RealizarServicoEmpresa(null, sdf.parse("2022-01-01"), false, false,
                                 false, ser1, emp1);
                 RealizarServicoEmpresa rse5 = new RealizarServicoEmpresa(null, sdf.parse("2022-01-01"), true, false,
-                                false, ser2, emp2);
+                                true, ser2, emp2);
                 RealizarServicoEmpresa rse6 = new RealizarServicoEmpresa(null, sdf.parse("2022-01-01"), true, false,
-                                false, ser2, emp3);
+                                true, ser2, emp3);
                 RealizarServicoEmpresa rse7 = new RealizarServicoEmpresa(null, sdf.parse("2022-01-01"), true, false,
-                                false, ser2, emp2);
+                                true, ser2, emp2);
 
-                Pedido ped1 = new Pedido(null, 10.00, "28123123123", cli1);
-                Pedido ped2 = new Pedido(null, 10.00, "28123123123", cli2);
+                Pedido ped1 = new Pedido(null, 500.00, "28123123123", cli1);
+                Pedido ped2 = new Pedido(null, 9.99, "28123123123", cli2);
 
-                ItemPedido itp1 = new ItemPedido(ped1, pro1, 10.00);
-                ItemPedido itp2 = new ItemPedido(ped2, pro2, 10.00);
+                ItemPedido itp1 = new ItemPedido(ped1, pro1, 500.00);
+                ItemPedido itp2 = new ItemPedido(ped2, pro2, 9.99);
 
                 ItemReposicao itr1 = new ItemReposicao(pro1, rep1, 1);
 
@@ -177,10 +178,10 @@ public class _DBService {
                 empresaTerceirizadaRepository.saveAll(Arrays.asList(emp1, emp2, emp3));
                 orcamentoRepository.saveAll(Arrays.asList(orc1, orc2));
                 reposicaoRepository.saveAll(Arrays.asList(rep1));
-                produtoRepository.saveAll(Arrays.asList(pro1, pro2));
+                produtoRepository.saveAll(Arrays.asList(pro1, pro2, pro3));
                 servicoRepository.saveAll(Arrays.asList(ser1, ser2));
                 realizarServicoFuncionarioRepository.saveAll(Arrays.asList(rsf1, rsf2));
-                realizarServicoEmpresaRepository.saveAll(Arrays.asList(rse1, rse2, rse3, rse4,rse5, rse6, rse7));
+                realizarServicoEmpresaRepository.saveAll(Arrays.asList(rse1, rse2, rse3, rse4, rse5, rse6, rse7));
                 pedidoRepository.saveAll(Arrays.asList(ped1, ped2));
                 itemPedidoRepository.saveAll(Arrays.asList(itp1, itp2));
                 itemReposicaoRepository.saveAll(Arrays.asList(itr1));

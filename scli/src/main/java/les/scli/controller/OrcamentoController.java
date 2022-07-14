@@ -13,31 +13,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import les.scli.model.Pedido;
-import les.scli.services.PedidoService;
+import les.scli.model.Orcamento;
+import les.scli.services.OrcamentoService;
 import les.scli.services.exceptions.ConstraintException;
 
-//ARTHUR LEITE
+//Jonathan Bandeira
+
 @RestController
-@RequestMapping(value = "/pedido")
-public class PedidoController {
+@RequestMapping(value = "/orcamento")
+public class OrcamentoController {
     @Autowired
-    private PedidoService service;
+    private OrcamentoService service;
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Collection<Pedido>> findAll() {
-        Collection<Pedido> collection = service.findAll();
+    public ResponseEntity<Collection<Orcamento>> findAll() {
+        Collection<Orcamento> collection = service.findAll();
         return ResponseEntity.ok().body(collection);
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Pedido> insert(@Valid @RequestBody Pedido pedido, BindingResult br) {
+    public ResponseEntity<Orcamento> insert(@Valid @RequestBody Orcamento Orcamento,
+            BindingResult br) {
         if (br.hasErrors())
             throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
-        pedido = service.insert(pedido);
-        return ResponseEntity.ok().body(pedido);
+        Orcamento = service.insert(Orcamento);
+        return ResponseEntity.ok().body(Orcamento);
     }
-
+    
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> delete(@PathVariable Integer id) {
         service.delete(id);
@@ -45,10 +47,12 @@ public class PedidoController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity<Pedido> update(@Valid @RequestBody Pedido pedido, BindingResult br) {
+    public ResponseEntity<Orcamento> update(@Valid @RequestBody Orcamento Orcamento,
+            BindingResult br) {
         if (br.hasErrors())
             throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
-        pedido = service.update(pedido);
-        return ResponseEntity.ok().body(pedido);
+        Orcamento = service.update(Orcamento);
+        return ResponseEntity.ok().body(Orcamento);
     }
+
 }
