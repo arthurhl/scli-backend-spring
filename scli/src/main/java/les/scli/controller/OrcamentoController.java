@@ -1,10 +1,12 @@
 package les.scli.controller;
 
 import java.util.Collection;
+import java.util.Date;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,6 +55,22 @@ public class OrcamentoController {
             throw new ConstraintException(br.getAllErrors().get(0).getDefaultMessage());
         Orcamento = service.update(Orcamento);
         return ResponseEntity.ok().body(Orcamento);
+    }
+
+    @RestController
+    @RequestMapping(value = "/orcamento")
+    public class EmprestimoController {
+
+        @RequestMapping(value = "/findTotaisAndQuantidadesOrcamentosOfClientesByPeriodo/{dataInicio}/{dataTermino}", method = RequestMethod.GET)
+        public ResponseEntity<Collection<?>> findTotaisAndQuantidadesOrcamentosOfClientesByPeriodo(
+                @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dataInicio,
+                @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date dataTermino) {
+            Collection<?> collection = service.findTotaisAndQuantidadesOrcamentosOfClientesByPeriodo(
+                    dataInicio, 
+                    dataTermino);
+            return ResponseEntity.ok().body(collection);
+        }
+
     }
 
 }
