@@ -1,5 +1,8 @@
 package les.scli.repositories;
 
+import java.util.Collection;
+import java.util.Date;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.Query;
@@ -24,5 +27,9 @@ public interface OrcamentoRepository extends JpaRepository<Orcamento, Integer> {
 
     @Transactional(readOnly = true)
     @Query(value = "SELECT COUNT(*) FROM ORCAMENTO WHERE orcamento.cliente_id = ?1 and orcamento.data_inicio = CURRENT_DATE", nativeQuery = true)
-    public Integer findQtdOrcamento(Integer idCliente);  
+    public Integer findQtdOrcamento(Integer idCliente);
+
+    @Transactional(readOnly = true)
+    @Query(value = "SELECT CLIENTE.NOME AS NOME, SUM(VALOR) AS TOTAL, COUNT(VALOR) AS QUANTIDADE FROM ORCAMENTO INNER JOIN CLIENTE ON ORCAMENTO.CLIENTE_ID GROUP BY (nome)", nativeQuery = true)
+    public Collection<?> findTotaisAndQuantidadesOrcamentosOfClientesByPeriodo(Date dataInicio, Date dataTermino);  
 }
