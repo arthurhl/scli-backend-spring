@@ -53,15 +53,9 @@ public class ReposicaoController {
         return ResponseEntity.ok().body(reposicao);
     }
 
-    @RequestMapping(value="/ByPeriod/{beginning}/{end}", method = RequestMethod.GET)
-    public ResponseEntity<Collection<Reposicao>> listReplenishmentByPeriod() {
-        Collection<Reposicao> collection = service.findAll();
-        return ResponseEntity.ok().body(collection);
-    }
-
-    @RequestMapping(value="/ByProvider", method = RequestMethod.GET)
-    public ResponseEntity<Collection<Reposicao>> listReplenishmentByProvider() {
-        Collection<Reposicao> collection = service.findAll();
+    @RequestMapping(value="/byPeriod/{beginning}/{end}", method = RequestMethod.GET)
+    public ResponseEntity<Collection<?>> listReplenishmentByPeriod(@PathVariable String beginning, @PathVariable String end) {
+        Collection<?> collection = service.listReplenishmentByPeriod(beginning, end);
         return ResponseEntity.ok().body(collection);
     }
 }

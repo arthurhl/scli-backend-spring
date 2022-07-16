@@ -79,6 +79,10 @@ public class ReposicaoService {
         }
     }
 
+    public Collection<?> listReplenishmentByPeriod(String beginning, String end) {
+        return repositoryReposicao.listReplenishmentByPeriod(beginning, end);
+    }
+
     public void  verificarRegrasDeNegocio (Reposicao reposicao) { 
         // Regra de Negócio 1: Gerente terá limite de 1.000,00 semanal.
         Double weeklyExpense = repositoryReposicao.weeklyExpenseByManager();
