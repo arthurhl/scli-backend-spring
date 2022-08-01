@@ -170,7 +170,8 @@ public class _DBService {
 
                 pro1.setFornecedores(Arrays.asList(for1));
                 pro2.setFornecedores(Arrays.asList(for2));
-
+                pro3.setFornecedores(Arrays.asList(for2));
+                        
                 clienteRepository.saveAll(Arrays.asList(cli1, cli2));
                 fornecedorRepository.saveAll(Arrays.asList(for1, for2));
                 gerenteRepository.saveAll(Arrays.asList(ger1, ger2));
