@@ -1,5 +1,7 @@
 package les.scli.repositories;
 
+import java.util.Collection;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.Query;
@@ -16,4 +18,9 @@ public interface RealizarServicoEmpresaRepository extends JpaRepository<Realizar
     @Transactional(readOnly = true)
     @Query(value = "SELECT COUNT(FEEDBACK) FROM REALIZAR_SERVICO_EMPRESA WHERE FEEDBACK IS FALSE AND EMPRESA_TERCEIRIZADA_ID = ?1", nativeQuery = true)
     public Integer findCountFeedback(Integer id);
+
+    @Transactional(readOnly = true)
+    @Query(value = "SELECT * FROM REALIZAR_SERVICO_EMPRESA WHERE DEBITO = ?1", nativeQuery = true)
+    public Collection<?> findRelatorioEmpresaDebito(boolean debito);
+
 }

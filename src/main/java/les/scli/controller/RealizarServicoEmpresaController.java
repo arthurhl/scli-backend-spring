@@ -54,5 +54,11 @@ public class RealizarServicoEmpresaController {
         RealizarServicoEmpresa = service.update(RealizarServicoEmpresa);
         return ResponseEntity.ok().body(RealizarServicoEmpresa);
     }
+    
+    @RequestMapping(value = "/relatorio/{debito}", method = RequestMethod.GET)
+    public ResponseEntity<Collection<?>> findRelatorioEmpresaDebito(@PathVariable boolean debito) {
+        Collection<?> relatorioEmpresa = service.findRelatorioEmpresaDebito(debito);
+        return ResponseEntity.ok().body(relatorioEmpresa);
+    }
 
 }

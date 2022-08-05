@@ -69,4 +69,13 @@ public class RealizarServicoEmpresaService {
         }
     }
 
+    public Collection<?> findRelatorioEmpresaDebito(boolean debito) {
+        try {
+            return repositoryRealizarServicoEmpresa.findRelatorioEmpresaDebito(debito);
+        } catch (NoSuchElementException e) {
+            throw new ObjectNotFoundException(
+                    "Erro ao realizar o relatorio!" + RealizarServicoEmpresa.class.getName());
+        }
+    }
+
 }
